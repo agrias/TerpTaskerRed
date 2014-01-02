@@ -1,0 +1,115 @@
+<TITLE>Greg's Engineering Log</TITLE>
+<H1><U>Greg's Engineering Log</U></H1>
+<H2>TerpTasker Red</H2>
+
+<BODY>
+
+<U><B>October 20, 2013:</B></U>
+<P>
+Today we had a team meeting from 1-3pm in McKeldin Library. At this meeting we determined what parts of the proposal
+needed to be finished or fixed, and assigned those pieces to team members, to be completed by 11pm on Monday.
+We also split the product build into piece for each team to focus on. My team, 10, was assigned to work on the
+database and account management systems.
+</P>
+<P>
+Individually, I was assigned to turn the current competitor analysis in the proposal into a paragraph format
+that compares the competitor products to ours. Also, I am to add screenshots for each of the competitors
+main layouts.
+</P>
+
+<U><B>October 20, 2013:</B></U>
+<P>
+Today I completed my individual task. I rewrote the competitor analysis for the propsal to paragraph from and
+compared each competitor product to our build. I also included screenshots of each competitor product.
+</P>
+
+<U><B>October 22, 2013:</B></U>
+<P>
+Today in class we determined the final pieces of the propsal that need to be completed and assigned them to
+team members. We are aiming to deliver the proposal on Thursday of this week.
+</P>
+<P>
+Individually, I was assigned to clean up the competitors section and add short captions to describe the screenshots.
+I completed this individual task today as well. My next task for this week is to start implementing and designing how
+to set up a login system and the database we will use for the tasker.
+</P>
+
+<U><B>October 29, 2013:</B></U>
+<P>
+Today our team finished the first working version of a log in (account) system for the terp tasker. A few issues involved
+matching hashes and we discussed with the rest of the group a few things that need to be changed for security purposes.
+</P>
+<P>
+Individually, I am to work with Eyobe on the database and login system. Including coordinating access to the accounts data
+for other groups, like the the webpage designer for example.
+</P>
+
+<U><B>November 2, 2013:</B></U>
+<P>
+On Thursday we had a group meeting in class and divided up even further assignments. I am still working on database and 
+account management/loging, mainly with Eyobe. Today we were asked to figure a way to add a 'captcha' to the login process
+and to also create a page to deal with password retrieval via email.
+</P>
+
+<U><B>November 4, 2013:</B></U>
+<P>
+I inserted a working recaptcha form on the main Bootstrap registration page. A script handles the captcha generation on the 
+HTML file and verifys through the server registration script. Now I have to start creating a admin account system that will
+allow a user to login and have the ability to add and remove users.
+</P>
+
+<U><B>November 15, 2013:</B></U>
+<P>
+We agreed on a schema for every part of the database except the calendar. We still need to figure this part out. My group is
+going to implement the database on the server using this schema and MySQL. Afterwards we will implement the rest of the website
+functionality.
+</P>
+
+<U><B>November 20, 2013:</B></U>
+<P>
+Today I set up the MySQL database on the VM. Formatting was an issue I resolved for consistency and there are some relations
+that were incomplete in the schema. Those will be added in when those modules have all of the information required figured out.
+This took about 1.5 hrs to set up. I need to add the remaining relations also for the ToDoList, for that groups module.
+</P>
+
+<U><B>November 23, 2013:</B></U>
+<P>
+Created a delete_task.php that when passed a taskID will remove that row of the task table. When logged in a user can now
+delete a task they have created. The front end build will pass the taskID to this backend php function. I also started working
+on a function to allow users to edit tasks. Not finished this yet, having trouble with getting the Update query to pass values
+from the POST. I also need to next work on creating admin account and setting  new registration to a default non-admin value 
+in the members table of the database. Todays work took about 3 hours to figure out. Clarification of the new database schema
+is needed for us to migrate our function to it and to implement the remainder of the database functionality, as that is my
+groups primary role of the product build.
+</P>
+
+<U><B>December 2, 2013:</B></U>
+<P>
+We had a meeting today at 7pm. We went through all the things we have completed over break and all of the things we still
+need to accomplish by Thursday, which is when we have our walkthrough. Today I finished the administrator account actions. 
+My group still needs to write a config file for user set up, fix the delete your account function, add contexts automatically
+when a new user is registered. Todays work took about 5 hours. A few places need to be changed to prepared statements and
+a hidden field for admin actions need to be created for when an admin logs in they can see it, but others can't. 
+</P>
+
+<U><B>December 2, 2013:</B></U>
+<P>
+Last day before walk through. I completed a few small tasks, such as adding pre-set contexts and a preset category when a new
+user registers an account. The 'Delete Your Account' function in the settings is now working properly after me and Matt fixed
+it. Tonight my group (Team 10) had a group chat online about our last tasks and what we did/did not complete. We completed 
+everything we were asked to do on the database side, login, SSL and config file. Our meeting also decided what we would talk 
+about in the presentation. Eyobe and I will be discussing the database setup/use/integration. The code fixes I performed took
+approximately 1 hour and the meeting we held also took about 1 hour. 
+</P>
+
+<U><B>December 10, 2013:</B></U>
+<P>
+Last night we had a team meeting to discuss the validation exercises. We made sure that everyone had a test subject with an
+android phone that could complete the validation test before Thursday. We also discussed the cost analysis and drew a sketch
+of the architectural design of the project to help with each teams cost analysis. Team 10 had a meeting over online 
+conference to begin work on our cost analysis. We divided up the different parts so everyone had a part to complete and
+we could complete the task faster and with better quality. The team meeting took about 1.5 hours and the team 10 meeting
+took about another 1.5 hours.
+</P>
+
+</BODY>

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Project One: Current Courses Layer</title>
+	<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <script src="jquery.js"></script>
+	<style type="text/css">
+		html, body {
+            height: 100%;
+        }
+        #mapdiv {
+            width: 100%;
+            height: 60%;
+            border: 1px solid black;
+        }
+		div.olControlAttribution { bottom:3px; }
+    </style>
+</head>
+
+<body>
+	<script>
+		$(document).ready(function(){
+			var map;
+			var zoom           	= 16; 
+			var fromProjection 	= new OpenLayers.Projection("EPSG:4326");   															//Transform from wgs1984
+			var toProjection   	= new OpenLayers.Projection("EPSG:900913"); 															//to mercator 
+			var position       	= new OpenLayers.LonLat(-76.9448, 38.9867).transform( fromProjection, toProjection);					//Centered on campus
+			var bounds			= new OpenLayers.Bounds(-76.9641, 38.9657, -76.9237, 39.0086).transform(fromProjection, toProjection);	//Lock to College Park
+			var locationLayer	= new OpenLayers.Layer.Vector("Geolocation Layer", {													//Current location label
+										styleMap: new OpenLayers.StyleMap({'default':{
+											label : "${name}",
+											fontColor: "white",
+											fontWeight: "bold",
+											labelOutlineColor: "black",
+											labelOutlineWidth: 2
+										}})
+								});	
+			var clusterStyle = new OpenLayers.Style({																					//Cluster draw/select style
+										pointRadius: "${radius}",
+										fillColor: "#ffcc66",
+										fillOpacity: 0.8,
+										strokeColor: "black",
+										strokeWidth: 2,
+										strokeOpacity: 0.8,		
+									}, {
+										context: {
+											radius: function(feature) {
+														var pix = 2;
+														if(feature.cluster) {
+															pix = Math.min(feature.attributes.count, 3) * 3;
+														}
+														return pix;
+													}
+										}
+								});
+			var classesLayer	= new OpenLayers.Layer.Vector("Class Layer", {															//Class layer
+										strategies: [new OpenLayers.Strategy.Cluster({threshold: 1, distance: 1})],
+										styleMap: 	new OpenLayers.StyleMap({
+												"default": clusterStyle,
+												"select" : {fillColor: "red"}
+											}
+								)});	
+
+											
+			map = new OpenLayers.Map({
+				div: "mapdiv",
+				projection: "EPSG:4326",
+				restrictedExtent: bounds
+			});
+			map.addLayer(new OpenLayers.Layer.OSM("Simple OSM Map"));
+			map.setCenter(position, zoom);
+			
+			//Attempt to geolocate
+			navigator.geolocation.getCurrentPosition(geolocation_success, geolocation_failed, {timeout:10000});
+			
+			//Timestamp
+			var currTime = new Date();
+			var currTimeString = currTime.getMonth()+1 + "/" + currTime.getDate() + "/" + currTime.getFullYear() + " " + 
+								 currTime.getHours() + ":" + (currTime.getMinutes() < 10 ? "0" : "") + currTime.getMinutes();
+
+			document.getElementById('refreshTime').innerHTML = "Refreshed at: " + currTimeString;
+			
+			//Draw map
+			map.addLayer(locationLayer);
+			map.addLayer(classesLayer);
+
+
+			//Talk to server
+                        var week = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
+                        var last_table = "null";
+			var day = week[currTime.getDay()];
+                        var hrmin = (currTime.getHours() < 10 ? "0" : "") + currTime.getHours() + (currTime.getMinutes() < 10 ? "0" : "") + currTime.getMinutes();
+                        getData("W", "1100"); //getData(day, hrmin);
+			
+			//Listeners for cluster onclick event
+			var selectFeatureListener = new OpenLayers.Control.SelectFeature(classesLayer, {hover: false});
+			map.addControl(selectFeatureListener);
+			selectFeatureListener.activate();
+			classesLayer.events.on({"featureselected": featureSelected, "featureunselected": featureUnselected});
+			
+			
+			//A cluster is selected
+			function featureSelected(event)
+			{
+				var htmlString = "<b>Courses in this Building:</b><br>";
+				
+				for(var i = 0; i<event.feature.cluster.length; i++)
+				{
+					var feature = event.feature.cluster[i].attributes;
+					htmlString += feature.courseNo+": "+feature.courseName+"<br>Professor: "+feature.professor+"<br>"+feature.building+" "+feature.startTime+" - "+feature.endTime+"<br><br>";
+				}
+				document.getElementById('selectedClusterClasses').innerHTML = htmlString;
+			}
+			
+			function featureUnselected(event)
+			{
+				document.getElementById('selectedClusterClasses').innerHTML = "";
+			}
+			
+			
+			//Update map on geolocation success/fail
+			function geolocation_success(position)
+			{
+				var pos = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude).transform(fromProjection, toProjection);
+				if(bounds.containsLonLat(pos))
+				{
+					point = new OpenLayers.Geometry.Point(position.coords.longitude, position.coords.latitude).transform(fromProjection, toProjection);
+					feature = new OpenLayers.Feature.Vector(point);
+					feature.attributes = {
+						name: "Current Location"
+					};
+					locationLayer.addFeatures([feature]);
+
+					map.setCenter(pos, zoom);
+					document.getElementById('geoLocationStatus').innerHTML = "Geolocation successful";
+				}
+				else
+				{
+					document.getElementById('geoLocationStatus').innerHTML = "Geolocation determined current location off campus - centering on campus.";
+				}
+			}
+			
+			function geolocation_failed()
+			{
+				document.getElementById('geoLocationStatus').innerHTML = "Current location unavailable - centering on campus.";
+			}
+			
+			function addCourse(longitude, latitude, location, courseNo, courseName, professor, startTime, endTime)
+			{
+				var features = [];
+				for(var oldFeatures = 0; oldFeatures < classesLayer.features.length; oldFeatures++)
+				{
+					features = features.concat(classesLayer.features[oldFeatures].cluster);
+				}
+
+				var point = new OpenLayers.Geometry.Point(longitude, latitude).transform(fromProjection, toProjection);
+				var feature = new OpenLayers.Feature.Vector(point);
+				feature.attributes = {
+					building: 	location,
+				        courseNo:       courseNo,
+					courseName:	courseName,
+                                        professor:      professor,
+					startTime: 	startTime,
+					endTime: 	endTime
+				}
+				features.push(feature);
+				classesLayer.removeAllFeatures();
+				classesLayer.addFeatures(features);
+			}
+			
+			function clearAndDrawCourses(objData)
+			{
+				var features = [];
+				for(var p = 0; p < objData.length; p++){
+					var point = new OpenLayers.Geometry.Point(objData[p].x, objData[p].y).transform(fromProjection, toProjection);
+					var feature = new OpenLayers.Feature.Vector(point);
+					feature.attributes = {
+						building: 		objData[p].meeting_place,
+						courseNo:       objData[p].course_code,
+						courseName:		objData[p].title,
+						professor:      objData[p].professor,
+						startTime: 		objData[p].start_time,
+						endTime: 		objData[p].end_time
+					}
+					features.push(feature);
+				}
+				classesLayer.removeAllFeatures();
+				classesLayer.addFeatures(features);
+			}
+			
+                        //make AJAX connection and send weekday and time as well as last table
+                        function getData(day, time){
+                               var xmlhttp;
+			       if (window.XMLHttpRequest){  //for IE7+, Firefox, Chrome, Opera, Safari
+				    xmlhttp = new XMLHttpRequest();
+			       }else{ // for IE6, IE5
+				    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			       }
+
+                               //data receiving and parsing function
+                               xmlhttp.onreadystatechange=function()
+                               {
+                                   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                                   {
+                                       
+                                       var obj = eval('(' + xmlhttp.responseText + ')'); //transform text to object
+				       if(obj.status == "clear"){
+                                            //clear points
+											classesLayer.removeAllFeatures();
+											
+                                       }else if(obj.status == "refresh"){
+                                            clearAndDrawCourses(obj.data)
+                                            last_table = obj.table_name;
+                                       }else{
+                                            //otherwise status is "no_change" so do nothing
+                                       }
+                                        
+                                   }
+                               }//end function definition
+ 
+                               xmlhttp.open("POST", "getlocs.php", true);   //asynchronous
+			       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                               xmlhttp.send("day="+day+"&time="+time+"&last_table="+last_table);
+
+                        }
+
+			});
+	</script>
+	<br><b>Team 3's Map Thing</b><br><br>
+    <div id="mapdiv"></div>
+    <br>
+    <div id="refreshTime"> </div>
+    <div id="geoLocationStatus"> </div>
+    <p><b>Select a cluster on the map above - a list will populate below with nearby classes that are in session now.</b></p>
+	<div id="timeOfCourseData"> <p><b>TODO: What time is this information for? Update on getData call</b></p> </div>
+    <div id="selectedClusterClasses"> </div>
+</body>
+</html>

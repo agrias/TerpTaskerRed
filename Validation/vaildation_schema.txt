@@ -1,0 +1,152 @@
+Call_History
+Field   Type    Null    Key     Default Extra
+callID  int(11) NO      PRI     NULL    auto_increment
+userID  int(11) NO      PRI     NULL
+time    datetime        YES             NULL
+categoryID      int(11) YES             NULL
+phonenum        varchar(10)     YES             NULL
+duration        time    YES             NULL
+name    varchar(15)     YES             NULL
+
+Category
+Field   Type    Null    Key     Default Extra
+categoryID      int(10) NO      PRI     NULL    auto_increment
+ow      int(11) YES             NULL
+userID  int(11) NO      MUL     NULL
+name    varchar(50)     NO              NULL
+d_created       int(15) NO              NULL
+d_edited        int(15) YES             NULL
+sorting tinyint(3)      YES             NULL
+published       tinyint(3)      YES             NULL
+taskview        int(10) YES             NULL
+description     varchar(500)    YES             NULL
+color   char(6) NO              NULL
+
+Contacts
+Field   Type    Null    Key     Default Extra
+contactID       int(11) NO      PRI     NULL    auto_increment
+userID  int(11) NO      MUL     NULL
+categoryID      int(10) YES     MUL     NULL
+name    varchar(45)     YES             NULL
+email   varchar(45)     YES             NULL
+phonenum        varchar(10)     YES             NULL
+
+Context
+Field   Type    Null    Key     Default Extra
+contextID       int(11) NO      PRI     NULL    auto_increment
+userID  int(11) NO      MUL     NULL
+name    varchar(50)     NO              NULL
+description     varchar(500)    YES             NULL
+color   char(6) NO              NULL
+
+Event
+Field   Type    Null    Key     Default Extra
+id      int(15) NO      PRI     NULL    auto_increment
+userID  int(11) NO      MUL     NULL
+startTime       int(15) NO              NULL
+endTime int(15) NO              NULL
+title   varchar(50)     NO              NULL
+location        varchar(100)    YES             NULL
+url     varchar(150)    YES             NULL
+categoryID      int(10) NO      MUL     NULL
+repeatB varchar(5)      YES             NULL
+repeatLength    varchar(10)     YES             NULL
+repeatFreq      int(10) YES             NULL
+repeatEnd       int(15) YES             NULL
+emailReminder   int(15) YES             NULL
+popupReminder   int(15) YES             NULL
+allDay  varchar(5)      NO              NULL
+description     varchar(500)    YES             NULL
+
+Text_Messages
+Field   Type    Null    Key     Default Extra
+textID  int(11) NO      PRI     NULL    auto_increment
+userID  int(11) NO      PRI     NULL
+time    datetime        YES             NULL
+categoryID      int(11) YES             NULL
+text_content    varchar(45)     YES             NULL
+phonenumber     varchar(10)     YES             NULL
+name    varchar(20)     YES             NULL
+
+TimeBlock
+Field   Type    Null    Key     Default Extra
+blockID int(10) NO      PRI     NULL    auto_increment
+contextID       int(11) NO      MUL     NULL
+startTime       int(15) NO              NULL
+endTime int(15) NO              NULL
+emailReminder   int(15) YES             NULL
+popupReminder   int(15) YES             NULL
+repeatLength    varchar(10)     YES             NULL
+repeatFreq      int(10) YES             NULL
+repeatEnd       int(15) YES             NULL
+repeatB varchar(5)      NO              NULL
+allDay  varchar(5)      NO              NULL
+
+login_attempts
+Field   Type    Null    Key     Default Extra
+user_id int(11) NO              NULL
+time    varchar(30)     NO              NULL
+
+members
+Field   Type    Null    Key     Default Extra
+id      int(11) NO      PRI     NULL    auto_increment
+email   varchar(50)     NO              NULL
+password        char(128)       NO              NULL
+salt    char(128)       NO              NULL
+firstname       varchar(26)     YES             NULL
+lastname        varchar(26)     YES             NULL
+creationDate    int(15) YES             NULL
+DeactivationDate        int(15) YES             NULL
+DeactivationReason      varchar(500)    YES             NULL
+Administrator   tinyint(1)      YES             NULL
+active  tinyint(1)      YES             NULL
+task_email_remind       int(15) YES             NULL
+task_popup_remind       int(15) YES             NULL
+event_email_remind      int(15) YES             NULL
+event_popup_remind      int(15) YES             NULL
+context_email_remind    int(15) YES             NULL
+context_popup_remind    int(15) YES             NULL
+
+mtt_tag2task
+Field   Type    Null    Key     Default Extra
+tag_id  int(10) NO      MUL     NULL
+task_id int(10) NO      MUL     NULL
+categoryID      int(10) NO      MUL     NULL
+userID  int(11) NO      MUL     NULL
+
+mtt_tags
+Field   Type    Null    Key     Default Extra
+id      int(10) NO      PRI     NULL    auto_increment
+name    varchar(50)     NO              NULL
+userID  int(11) NO      MUL     NULL
+
+mtt_todolist
+Field   Type    Null    Key     Default Extra
+id      int(10) NO      PRI     NULL    auto_increment
+categoryID      int(10) NO      MUL     NULL
+d_created       int(15) NO              0
+d_completed     int(15) NO              0
+d_edited        int(15) NO              0
+compl   tinyint(3)      NO              0
+title   varchar(250)    NO              NULL
+note    text    YES             NULL
+prio    tinyint(4)      NO              0
+ow      int(11) NO              0
+tags    varchar(600)    NO
+tags_id varchar(600)    NO
+duedate int(15) YES             NULL
+estHours        int(10) NO              0
+estMins int(8)  NO              0
+contextID       int(11) NO      MUL     NULL
+emailReminder   int(15) YES             NULL
+popupReminder   int(15) YES             NULL
+userID  int(11) NO      MUL     NULL
+parent_task     int(10) YES             NULL
+
+user_Activity
+Field   Type    Null    Key     Default Extra
+loginID int(15) NO      PRI     NULL    auto_increment
+userID  int(11) YES             NULL
+timestamp       datetime        YES             NULL
+ip_address      varchar(45)     YES             NULL
+action  varchar(100)    YES             NULL

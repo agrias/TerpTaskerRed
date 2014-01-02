@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/titleTask"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:text="Name of Task"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <TextView
+                android:id="@+id/timeTaskStart"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:text="Time Span"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/timeTaskDue"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:text="Time Span"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/locationTask"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:text="Location"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/textViewMargin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:enabled="false"
+                android:maxHeight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:text="Other Information"
+                android:textColor="@color/lightgrey" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/categoryTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="The task&apos;s category"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/contextTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="The task&apos;s context"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/estimatedTimeRemainTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="Time to completion"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/taskRepeatStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="The task's repeat status"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            
+            <TextView
+                android:id="@+id/descriptionTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="The task&apos;s description"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="Related Tasks"
+                android:textColor="@color/lightgrey" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@android:color/darker_gray" />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+            <FrameLayout
+                android:id="@+id/content_frame_related_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="150dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+</LinearLayout>

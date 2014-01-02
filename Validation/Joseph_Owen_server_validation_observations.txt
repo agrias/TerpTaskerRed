@@ -1,0 +1,14 @@
+apt-get Apache 2 installs the wrong version
+	asked if we used apt-get for everything
+	be more specific about library or package names
+	links would be preferred to just a dependency list
+asked to instead be given a script that creates the database for you instead of having to type in all the commands by hand
+ideally, the config file should have been a makefile
+	would at least put the website in its directory and set up the database
+schema should NOT be an image!
+	schema also had errors, like typos and missing types
+	schema also did not match database exactly --> sent Joseph a modified version of the DESCRIBE outputs for each table, saved as validation_schema.txt
+other SQL issue: Call_History has 2 primary keys
+needed to specify username & password for database connection
+after Joseph wrote a Python script to generate the mySQL calls, database and website were both working
+	

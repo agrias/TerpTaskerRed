@@ -1,0 +1,37 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/sync_action"
+        android:icon="@drawable/sync_icon"
+        android:showAsAction="ifRoom"
+        android:title="Sync">
+    </item>
+    <item
+        android:id="@+id/search_action"
+        android:icon="@drawable/actionbar_search_icon"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:actionViewClass="com.actionbarsherlock.widget.SearchView"
+        android:title="Search">
+    </item>
+    <item
+        android:id="@+id/sort_action"
+        android:icon="@drawable/actionbar_sort_icon"
+        android:showAsAction="ifRoom|withText"
+        android:title="Sort">
+        <menu>
+            <group android:checkableBehavior="single" android:id="@+id/sortSelGroup">
+		        <item
+		            android:id="@+id/menuSortTitle"
+		            android:title="Sort by Name" android:checked="true"/>
+		        <item
+		            android:id="@+id/menuSortTime"
+		            android:title="Sort by Time" android:checked="false"/>
+		        <item
+		            android:id="@+id/menuSortContext"
+		            android:title="Sort by Context" android:checked="false"/>
+		        <item
+		            android:id="@+id/menuSortCategory"
+		            android:title="Sort by Category" android:checked="false"/>
+        	</group>
+    </menu>
+    </item>
+</menu>

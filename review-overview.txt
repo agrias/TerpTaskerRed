@@ -1,0 +1,20 @@
+TASKER RED
+
+Generally a nice description of the problem to be solved, but the model text (which needs to
+be the sharpest) is a single long paragraph that runs on, and does not reflect the value of
+iterative refinement through our drafting process.  Much other language remains loose and 
+unpolished. ("When the user works on a task, they can....")  *
+
+I'm glad for the tradeoff analysis. It is a good list of related products for differentiation,
+though since our proposed edge is not sharply defined before that point, the comparison comes
+off as soft - we can't see why (just to pick one) we aren't using Lighting plugin, for example.
+
+Promises to implement "as many of those features [listed later] as possible." Oops. Not sharp.
+
+The model/language snit is worth a minor defect. Under most circumstances I would not accept
+an open-ended 'as many as possible' obligation, but there are other aspects to this which I 
+like, and I don't want to slow things down badly at this point. I will count that as a couple
+minor defects (rather than a major one, which would have been 10 points), and give a conditional
+green light on presumption that you will promptly give me a crisp list of features which you will
+commit to implementing (and that I agree.) 91
+

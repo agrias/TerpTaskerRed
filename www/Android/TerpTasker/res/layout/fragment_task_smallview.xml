@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/smallTaskViewLL"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/taskName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Name of Task"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/taskLocation"
+        android:layout_width="fill_parent"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_height="wrap_content"
+        android:text="Task&apos;s Location" />
+
+    <TextView
+        android:id="@+id/taskDue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Task&apos;s Due Date" />
+
+</LinearLayout>

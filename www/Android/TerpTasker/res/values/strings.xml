@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Terp Tasker</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_settings">Settings</string>
+    <string name="SplashPageOne">Welcome to Terp Tasker! We\'ll help organize your time and keep you on track. Swipe over to learn more and get started!</string>
+    <string name="SplashPageTwo">If you haven\'t already, head over to \n <b>www.TerpTasker.com</b> \n on a computer to create an account and get started. Then head back to the app.</string>
+    <string name="SplashPageThree">Once you log in, swipe in from the left to view your calendar, tasks, and notification settings.</string>
+    <string name="title_activity_main_program">Terp Tasker</string>
+	<string name="drawer_open">Drawer Open</string>
+	<string name="drawer_closed">Drawer Closed</string>
+</resources>

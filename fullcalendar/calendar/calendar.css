@@ -1,0 +1,21 @@
+
+#myCalendar {
+	width: 100%;
+	margin: 0 auto;
+	}
+#calEventDialog {
+	width: 50%;
+	display:none;
+	}
+#contextSelect {
+	display:none;
+	}
+#repeatFields {
+	display:none;
+	}
+#categorySelect {
+	display:none;
+	}
+#contextRemFields {
+	display:none;
+	}

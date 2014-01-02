@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Elfalem's Log</title>
+
+<style type="text/css">
+.time {
+	color: red;
+}
+</style>
+</head>
+<body>
+<center>
+<h3>Elfalem's Log</h3>
+</center>
+<hr/>
+
+<!--
+<h4>Sun. Dec. 20, 2013</h4>
+<p><span class="time"> hrs</span></p>
+
+-->
+<h4>Mon. Dec. 9, 2013</h4>
+<p><span class="time">1.25 hrs</span> We had a group meeting to finalize what is expected from each person in order to submit all our deliverables by Thursday. We sketched the architecture of Terp Tasker on a white board.</p>
+
+<p><span class="time">0.5 hrs</span> I administered part 1 of the validation exercise to a volunteer.</p>
+
+<h4>Sun. Dec. 8, 2013</h4>
+<p><span class="time">0.75 hr</span> The php function strtotime() was throwing a warning which was clogging the apache error log and eating up disc space since the email reminder script is called every 10 minutes. I've set the default time zone to "new york" in repeat_tools.php which was the cause of the warning. Apache error logging has also been disabled by Matt. Another unexpected bug was that the doctor who account was hanging on chooser.php during user log in. I traced this issue to database entries where timeblocks had repeatB='true' and repeatFreq=0 which is not a valid set of inputs. I manually changed the existing rows with this issue to have repeatFreq=1 and asked the calendar team to verify that their code doesn't allow such inputs.</p>
+
+<p>I would like to modify the popup reminders to use bootstrap styling however this is not possible due to a code freeze.</p>
+
+<h4>Thu. Dec. 5, 2013</h4>
+<p><span class="time">4 hrs</span> I finished implementing email reminders. I updated the server time which was 20 minutes ahead to get email reminder to work properly.</p>
+
+<h4>Wed. Dec. 4, 2013</h4>
+<p><span class="time">0.5 hr</span> I modified chooser.php to check for repeating events and timeblocks when a user logs in.</p>
+
+<h4>Tue. Dec. 3, 2013</h4>
+<p><span class="time">3 hrs</span> I escaped user input which only occurs once in check_reminder.php. All other queries don't need escaping/sanitizing since no user data is used in generating them. I implemented popup reminders for repeating events. I also modified the popup to show times in a human readable form instead of unix time.</p>
+
+<h4>Mon. Dec. 2, 2013</h4>
+<p><span class="time">2 hrs</span> We had a group meeting where we shared our status and prioritized remaining tasks. I will need to sanitize inputs to all the scripts I've written, include reminders for repeating events, and finish the email reminder code. Further details are available on the meeting minutes.</p>
+
+<p><span class="time">1 hr </span> I started the mailer.php script which will be scheduling email reminders as a cron job.</p>
+
+<h4>Fri. Nov. 29, 2013</h4>
+<p><span class="time">4 hrs</span> I implemented popup notifications for events. I just need to add code for tasks and time blocks and do additional testing.</p>
+
+<p><span class="time">1 hr</span> Fully implemented popup notifications.</p>
+<h4>Thu. Nov. 28, 2013</h4>
+<p><span class="time">0.75 hrs</span> I tried to get add_to_db.php to sanitize input. I'm having difficulty pinpointing the code that sanitizes input in that script or the reg_script.php used when people register.</p>
+
+<p><span class="time">1 hr</span> I started the chooser.php script which checks if there is an ongoing event or timeblock when the user logs in and switches to the appropriate category or context respectively. It still needs to handle recurring events/timeblocks.</p>
+
+<h4>Sun. Nov. 24, 2013</h4>
+<p><span class="time">3 hrs</span> We had a two-hour team meeting where we gave progress updates, and prioritized outstanding tasks. Refer to meeting minutes for details. We also discussed the database schema. We decided to stick with "secure_login" as our development database. All date and time related fields will be in unix time format. I updated/deleted/created tables and columns to match with the updated schema.</p>
+
+<h4>Fri. Nov. 22, 2013</h4>
+<p><span class="time">0.75 hrs</span> I've created the TerpTasker database on the VM according to the schema.</p>
+
+<h4>Thu. Nov. 21, 2013</h4>
+<p><span class="time">1 hr</span> I updated the database schema based on changes submitted from the tasks and calendar teams. I also ensured foreign key mappings and specified the data types for all fields.</p>
+
+<h4>Tue. Nov. 19, 2013</h4>
+<p><span class="time">1 hr</span> I created a general template page that checks if a user is logged in using PHP session variables.</p>
+
+<p><span class="time">1 hr</span> I discussed with Billy how to best setup the database to facilitate handling of events and tasks. I've proposed changes to how recurring events are handled.</p>
+
+
+<h4>Sun. Nov. 17, 2013</h4>
+<p><span class="time">2 hrs</span> We had a group meeting where we shared our progress and assigned tasks to each person. My responsibilty is to study the functions.php file and make sure its in a state where it is able to handle JSON requests and send responses. See meeting minutes for further details.</p>
+
+<h4>Fri. Nov. 15, 2013</h4>
+<p><span class="time">1 hr</span> I met with Paarth and we drafted the JSON object specifications and also modified the database schema. I will formalize our specification and present RFC to the rest of the group.</p>
+
+
+<h4>Fri. Nov. 8, 2013</h4>
+<p><span class="time">1 hr</span> I wrote the introduction for the cost analysis, formatted and submitted the document.</p>
+
+<h4>Sat. Nov. 2, 2013</h4>
+<p><span class="time">5 hrs</span> Paarth and I worked on the initial database schema. We still need to incorporate data items such as call history. I also edited our draft proposal and will send version 11.03 for grade to Purtilo tomorrow.</p>
+
+<h4>Thu. Oct. 31, 2013</h4>
+<p><span class="time">0.5 hrs</span> I met with Dr. Purtilo to further clarify his comments on our validation exercise. Refer to minutes from Purtilo meetings for details. I will be incorporating the changes and submitting our proposal for real within the next two days.</p>
+
+<p><span class="time">0.5 hrs</span> Terp Tasker Red met during class lab time to update on progress and confirm responsibilities. Eric has implemented an Android app. The login system has also been established.</p>
+
+<h4>Sun. Oct. 27, 2013</h4>
+<p><span class="time">1.5 hrs</span> A team 3 meeting was held from 2-3:30pm. Paarth and I will be forming a committe with members of the other subteams to generate a data exchange object structure. Eric will continue working on an Android App and Emily will use Twitter Bootstrap to start developing the website. Josh will start auditing open source software we're using for security. Refer to group meeting minutes for details.</p>
+
+<h4>Thu. Oct. 24, 2013</h4>
+<p><span class="time">1 hr</span> I met with prof. Purtilo to receive feedback on draft proposal version 10.24. Refer to minutes from Purtilo meetings for details.</p>
+
+<p><span class="time">1 hr</span> Emily and I started editing the proposal according to Purtilo's comments including evaluating and slimming down on the feature set. Emily will finalize edits, add risks writing from Katherine, wireframes from Paarth, and evaluation of Lightning and Apple tasking from Billy and Matt. Emily will send the draft to Purtilo by tonight. Emily and I will handle all future edits to the proposal until a "green light" is given. All other team members will concentrate on coding. A 1 hr subteam meeting is tentatively scheduled for Sunday.</p>
+
+<h4>Tue. Oct. 22, 2013</h4>
+<p><span class="time">2 hrs</span> Eyobe and I met with prof. Purtilo from 9 to 11am to discuss various outstanding issues. Refer to minutes from Purtilo meetings for details.</p>
+
+<h4>Sun. Oct. 20, 2013</h4>
+<p><span class="time">2 hrs</span> We had a Tasker Red group meeting from 1 to 3pm. We assigned tasks to different people so that we could have our first complete draft of the proposal by Mon. 11pm. My task is to convert the list of features from table to paragraph format. The associated risks will be placed in a separate section.</p>
+</body>
+</html>

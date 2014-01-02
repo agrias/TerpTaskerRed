@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="Sync Settings">
+        <CheckBoxPreference android:summaryOn="Task Sync is ON" android:title="Task Sync" android:key="SyncTasksSetting" android:summaryOff="Task Sync is OFF" android:persistent="true" android:defaultValue="true"/>
+        <ListPreference android:entries="@array/SyncPeriod" android:title="Task Sync Duration" android:key="SyncTasksDurationSetting" android:entryValues="@array/SyncPeriod" android:persistent="true" android:defaultValue="15 Minutes"/>
+        
+        
+    </PreferenceCategory><PreferenceCategory android:title="Notification Settings">
+    
+    <CheckBoxPreference android:summaryOff="Terp Tasker will not show notifications." android:summaryOn="Terp Tasker will show notifications." android:title="Notifications" android:defaultValue="true" android:persistent="true" android:key="ShowNotifications"/>
+    <CheckBoxPreference android:summaryOff="Task reminders won't vibrate." android:summaryOn="Task reminders will vibrate." android:title="Vibrate" android:defaultValue="true" android:persistent="true" android:key="VibrateNotifications"/>
+</PreferenceCategory>
+    
+
+</PreferenceScreen>

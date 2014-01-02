@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.scarletledger.terptasker"
+    android:versionCode="1"
+    android:versionName="0.5" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+        <activity
+            android:name="com.scarletledger.terptasker.SplashActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.scarletledger.terptasker.MainProgramActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_main_program"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.scarletledger.terptasker.PreferencesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Terp Tasker Settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.scarletledger.terptasker.TaskViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Task Details"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".RefreshService"
+            android:exported="false" />
+
+        <receiver
+            android:name="RefreshServiceAlarmReceiver"
+            android:exported="true" />
+    </application>
+
+</manifest>

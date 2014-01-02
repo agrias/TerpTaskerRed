@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="SyncPeriod">
+	    <item>5 Minutes</item>
+	    <item>15 Minutes</item>
+	    <item>30 Minutes</item>
+	    <item>1 Hour</item>
+	    <item>2 Hours</item>
+	    <item>4 Hours</item>
+	    <item>Never</item>
+	</string-array>
+	
+    <string-array name="NotificationPeriod">
+	    <item>5 Minutes</item>
+	    <item>15 Minutes</item>
+	    <item>30 Minutes</item>
+	    <item>Never</item>
+	</string-array>
+</resources>
